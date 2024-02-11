@@ -37,4 +37,5 @@ print(height)
 x = [i[0] for i in items[:10]]
 print(x)
 plt.bar(x, height)
+plt.xticks(range(len(x)), x)
 plt.savefig(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
