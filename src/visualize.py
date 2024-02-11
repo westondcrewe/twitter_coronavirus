@@ -32,10 +32,10 @@ for k,v in items:
 
 print(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
 print()
-height = [i[1] for i in items[:10]]
+top_items = items[:10]
+height = [i[1] for i in top_items[::-1]]
 print(height)
-x = [i[0] for i in items[:10]]
+x = [i[0] for i in top_items[::-1]]
 print(x)
 plt.bar(x, height)
-plt.xticks(range(len(x)), x)
 plt.savefig(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
