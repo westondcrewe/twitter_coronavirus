@@ -12,6 +12,9 @@ args = parser.parse_args()
 import os
 import json
 from collections import Counter,defaultdict
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 # open the input path
 with open(args.input_path) as f:
@@ -26,3 +29,12 @@ if args.percent:
 items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)
 for k,v in items:
     print(k,':',v)
+
+print(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
+print()
+height = [i[1] for i in items[:10]]
+print(height)
+x = [i[0] for i in items[:10]]
+print(x)
+plt.bar(x, height)
+plt.savefig(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
