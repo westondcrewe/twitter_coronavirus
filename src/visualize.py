@@ -31,9 +31,9 @@ for k,v in items:
     print(k,':',v)
 
 top_items = items[:10]
-height = [i[1] for i in top_items]
-x = [i[0] for i in top_items]
-#x_sorted = [x for _, x in sorted(zip(height, x), reverse=True)]
-#height_sorted = sorted(height, reverse=True)
+height = [i[1] for i in top_items[::-1]]
+x = [i[0] for i in top_items[::-1]]
 plt.bar(range(len(x)), height, tick_label = x)
+plt.xlabel(f"{args.input_path.split('.')[1]}")
+plt.ylabel('Number of Tweets')
 plt.savefig(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
