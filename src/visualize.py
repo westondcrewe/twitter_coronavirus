@@ -30,14 +30,10 @@ items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), rev
 for k,v in items:
     print(k,':',v)
 
-print(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
-print()
 top_items = items[:10]
-height = [i[1] for i in top_items[::-1]]
-print(height)
-x = [i[0] for i in top_items[::-1]]
-print(x)
-x_sorted = [x for _, x in sorted(zip(height, x), reverse=True)]
-height_sorted = sorted(height, reverse=True)
-plt.bar(x_sorted, height_sorted)
+height = [i[1] for i in top_items]
+x = [i[0] for i in top_items]
+#x_sorted = [x for _, x in sorted(zip(height, x), reverse=True)]
+#height_sorted = sorted(height, reverse=True)
+plt.bar(range(len(x)), height, tick_label = x)
 plt.savefig(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
