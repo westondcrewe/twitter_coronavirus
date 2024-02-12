@@ -37,7 +37,7 @@ height = [i[1] for i in top_items[::-1]]
 print(height)
 x = [i[0] for i in top_items[::-1]]
 print(x)
-#x_sorted = [x for _, x in sorted(zip(height, x), reverse=True)]
-#height_sorted = sorted(height, reverse=True)
-plt.bar(x, height)
+x_sorted = [x for _, x in sorted(zip(height, x), reverse=True)]
+height_sorted = sorted(height, reverse=True)
+plt.bar(x_sorted, height_sorted)
 plt.savefig(f"{args.input_path.split('.')[1]}_{args.key}_plot.png")
