@@ -45,10 +45,11 @@ for hashtag in args.hashtags:
     for k,v in items:
         print(k,':',v)
     tweets = [i[1] for i in items]
-    date = [i[0] for i in items]
-    plt.bar(range(len(date)), tweets, tick_label = date)
+    date = [datetime.strptime(i[0], "%y-%m-%d") for i in items]
+    plt.bar(date, tweets)
     plt.xlabel("Date")
-    plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
-    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
+    plt.gca().xaxis.set_major_locator(mdates.MonthLocator(bymonthday=1))
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%y-%m-%d"))
+    plt.xticks([x for x in date if x.day == 1], rotation=45)
     plt.ylabel(f"Number of Tweets with {hashtag}")
     plt.savefig(f"daily_{hashtag}_tweets_plot.png")
