@@ -52,4 +52,5 @@ for hashtag in args.hashtags:
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%y-%m-%d"))
     plt.xticks([x for x in date if x.day == 1], rotation=45)
     plt.ylabel(f"Number of Tweets with {hashtag}")
+    plt.tight_layout()
     plt.savefig(f"daily_{hashtag}_tweets_plot.png")
